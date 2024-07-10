@@ -42,8 +42,9 @@ const edit = async (client, id) => {
 };
 
 const deleteClient = async (id) => {
+    console.log(id);
     try{
-        await fetch(`/clients/${id}`, {
+        await fetch(`/clients/delete/${id}`, {
             method : 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,6 +52,7 @@ const deleteClient = async (id) => {
         });
         
     }catch(e) {
+        console.log(id);
         console.log(e);
     }
 };
@@ -92,7 +94,7 @@ const createRow = (client, id) => {
         <td>${client.cidade}</td>
         <td>
             <button type="button" class="button green" onclick="editar('${id}')" id='edit-${id}'>editar</button>
-            <button type="button" class="button red" onclick="excluir(${id})" id='delete-${id}'>excluir</button>
+            <button type="button" class="button red" onclick="excluir('${id}')" id='delete-${id}'>excluir</button>
         </td>`;
     tbody.appendChild(tr);
 };
@@ -130,7 +132,6 @@ const editar = async (id) => {
 };
 
 const excluir = async (id) => {
-    
     await deleteClient(id);
     updateTable();
 };

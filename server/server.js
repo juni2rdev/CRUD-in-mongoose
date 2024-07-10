@@ -13,7 +13,7 @@ connectDB();
 app.use(bodyParser.json());
 app.use(express.json());
 app.use('/clients', clientRoutes);
-
+    
 //Servir arquivos estaticos
 app.use(express.static('public'));
 
